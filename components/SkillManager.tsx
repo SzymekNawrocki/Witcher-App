@@ -8,6 +8,7 @@ interface Skill {
   title: string;
   description: string;
   level: string;
+  completed: boolean;
 }
 
 const SkillManager: React.FC = () => {
@@ -26,6 +27,7 @@ const SkillManager: React.FC = () => {
         title: newSkillTitle,
         description: newSkillDescription,
         level: newSkillLevel,
+        completed: false, // Initialize as not completed
       };
 
       if (editingSkill) {
@@ -53,6 +55,12 @@ const SkillManager: React.FC = () => {
 
   const deleteSkill = (skillId: string) => {
     setSkills(skills.filter(skill => skill.id !== skillId));
+  };
+
+  const toggleSkillCompletion = (skillId: string) => {
+    setSkills(skills.map(skill => (
+      skill.id === skillId ? { ...skill, completed: !skill.completed } : skill
+    )));
   };
 
   return (
@@ -90,15 +98,20 @@ const SkillManager: React.FC = () => {
         keyExtractor={item => item.id}
         renderItem={({ item }) => (
           <View style={styles.skillItem}>
-            <Text style={styles.skillTitle}>{item.title}</Text>
+            <Text style={[styles.skillTitle, item.completed && styles.completedSkill]}>
+              {item.title}
+            </Text>
             <Text style={styles.skillDescription}>{item.description}</Text>
             <Text style={styles.skillLevel}>Poziom: {item.level}</Text>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity onPress={() => editSkill(item)}>
+              <TouchableOpacity style={styles.button} onPress={() => editSkill(item)}>
                 <Text style={styles.editButton}>Edytuj</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => deleteSkill(item.id)}>
+              <TouchableOpacity style={styles.button} onPress={() => deleteSkill(item.id)}>
                 <Text style={styles.deleteButton}>Usuń</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={() => toggleSkillCompletion(item.id)}>
+                <Text style={styles.completeButton}>{item.completed ? 'Oznacz jako nieukończone' : 'Ukończone'}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -150,11 +163,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  button: {
+    borderWidth: 1,
+    borderColor: Colors.light.text,
+    borderRadius: 5,
+    padding: 5,
+    marginRight: 5,
+  },
   editButton: {
     color: Colors.light.icon,
   },
   deleteButton: {
     color: 'red',
+  },
+  completeButton: {
+    color: 'green',
+  },
+  completedSkill: {
+    textDecorationLine: 'line-through',
+    color: 'gray',
   },
 });
 

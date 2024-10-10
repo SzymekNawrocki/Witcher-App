@@ -30,7 +30,7 @@ const LandingPage = () => {
     <View style={styles.container}>
       <StatusBar barStyle="light-content" />
       <ImageBackground
-        source={{ uri: 'https://cdn.pixabay.com/photo/2020/08/06/12/57/character-5467892_1280.jpg' }}
+        source={{ uri: 'https://cdn.pixabay.com/photo/2024/04/26/12/15/ai-generated-8721752_1280.jpg' }}
         style={[styles.background, { width, height }]} // Dynamically adjust width and height
         imageStyle={{ opacity: 0.4, resizeMode: 'cover' }} // Adjust the image to cover the screen
       >

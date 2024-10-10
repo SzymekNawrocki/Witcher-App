@@ -16,6 +16,8 @@ const ElixirDetails: React.FC<ElixirDetailsProps> = ({ elixir, onBack }) => {
       <Image source={{ uri: elixir.image }} style={styles.image} />
       <Text style={styles.name}>{elixir.name}</Text>
       <Text style={styles.description}>{elixir.description}</Text>
+      <Text style={styles.recipeTitle}>Receptura:</Text>
+      <Text style={styles.recipe}>{elixir.recipe}</Text>
     </View>
   );
 };
@@ -58,6 +60,17 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 16,
     color: Colors.dark.text,
+  },
+  recipeTitle: {
+    marginTop: 20,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: Colors.light.text,
+  },
+  recipe: {
+    fontSize: 16,
+    color: Colors.dark.text,
+    marginTop: 10,
   },
 });
 

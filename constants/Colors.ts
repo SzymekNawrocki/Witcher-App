@@ -1,12 +1,12 @@
-const tintColorLight = '#5C2D24'; // Kolor zainspirowany ciemnym, krwistym czerwonym
-const tintColorDark = '#D9B580';  // Ciepły, złoty odcień zainspirowany wiedźmińskimi runami
+const tintColorLight = '#5C2D24'; 
+const tintColorDark = '#D9B580';  
 
 export const Colors = {
   light: {
-    text: '#D9B580',           // Ciepły, złoty odcień nawiązujący do run i starych ksiąg
-    background: '#2F2F2F',     // Głęboka, ciemna szarość nawiązująca do kamiennych zamków
+    text: '#D9B580',           
+    background: '#2F2F2F',     
     tint: tintColorLight,      
-    icon: '#A37A5F',           // Brązowawy odcień inspirowany drewnem i starymi przedmiotami
+    icon: '#A37A5F',           
     tabIconDefault: '#A37A5F', 
     tabIconSelected: tintColorLight,
   },

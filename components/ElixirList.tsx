@@ -1,18 +1,13 @@
 import React from 'react';
 import { FlatList, Text, View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Colors } from '@/constants/Colors'; // Załaduj kolory z odpowiedniego pliku
+import { elixirs } from '@/constants/Data'; // Importuj dane z pliku Data.ts
 
 interface ElixirListProps {
   onSelectElixir: (elixir: any) => void;
 }
 
 const ElixirList: React.FC<ElixirListProps> = ({ onSelectElixir }) => {
-  const elixirs = [
-    // Przykładowe dane eliksirów
-    { id: '1', name: 'Elixir of Life', image: 'https://example.com/elixir1.jpg', description: 'Restores health.' },
-    { id: '2', name: 'Potion of Invisibility', image: 'https://example.com/elixir2.jpg', description: 'Grants temporary invisibility.' },
-    // Dodaj więcej eliksirów tutaj
-  ];
 
   const renderElixir = ({ item }: { item: any }) => (
     <TouchableOpacity style={styles.elixirItem} onPress={() => onSelectElixir(item)}>
